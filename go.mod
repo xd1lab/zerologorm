@@ -1,4 +1,4 @@
-module zerologorm
+module github.com/xd1lab/zerologorm
 
 go 1.20
 
