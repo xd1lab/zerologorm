@@ -10,6 +10,19 @@ import (
 	gormlogger "gorm.io/gorm/logger"
 )
 
+func SwitchLvl(lvl zerolog.Level) gormlogger.LogLevel {
+	switch lvl {
+	case zerolog.DebugLevel, zerolog.ErrorLevel:
+		return gormlogger.Error
+	case zerolog.WarnLevel:
+		return gormlogger.Warn
+	case zerolog.InfoLevel:
+		return gormlogger.Info
+	default:
+		return gormlogger.Silent
+	}
+}
+
 type Logger struct {
 	l                         *zerolog.Logger
 	LogLevel                  gormlogger.LogLevel
